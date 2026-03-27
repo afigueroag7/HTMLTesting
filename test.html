@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
+    <title>Marketing Survey</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
+            background-color: #f5f4ed;
             color: #333;
         }
 
         header {
             text-align: center;
             padding: 20px;
-            background-color: #1B0A50;
-            color: white;
+            background-color: white;
+            color: #003a5c;
         }
 
         header img {
-            max-width: 150px;
+            max-width: 400px;
             margin-bottom: 10px;
         }
 
@@ -54,7 +54,7 @@
             font-weight: bold;
         }
 
-        input, textarea {
+        input, textarea, select {
             margin-bottom: 15px;
             padding: 10px;
             border: 1px solid #ccc;
@@ -64,11 +64,11 @@
 
         input:focus, textarea:focus {
             outline: none;
-            border-color: #581968;
+            border-color: #2774ae;
         }
 
         button {
-            background-color: #581968;
+            background-color: #2774ae;
             color: white;
             padding: 10px 15px;
             border: none;
@@ -78,7 +78,7 @@
         }
 
         button:hover {
-            background-color: #F4A9FE;
+            background-color: #003a5c;
         }
 
         #response-message {
@@ -104,7 +104,7 @@
         footer {
             text-align: center;
             padding: 10px;
-            background-color: #1B0A50;
+            background-color: #003a5c;
             color: white;
             margin-top: 20px;
         }
@@ -155,46 +155,45 @@
     </script>
 </head>
 <body>
+
     <header>
-        <img src="240.png" alt="Company Logo">
-        <h1>Contact Us</h1>
+        <img src="logo.png" alt="Company Logo"><br>
+        <h1 style="display:inline">Marketing Survey - </h1><h1 id="project-name" style="display:inline"></h1>
     </header>
 
-    <p id="welcome-message"></p>
-
-    <script>
-        // Get the full query string from the current URL
-        const queryString = window.location.search;
-
-        // Create a URLSearchParams object
-        const urlParams = new URLSearchParams(queryString);
-
-        // Get the value of a specific parameter (e.g., 'name')
-        const userName = urlParams.get('name');
-
-        // Use the value to update the HTML content
-        if (userName) {
-            document.getElementById('welcome-message').innerHTML = `Hello, ${userName}!`;
-        }
-    </script>
-
     <main>
-        <p>We'd love to hear from you! Please fill out the form below, and we'll get back to you as soon as possible.</p>
+        <p>Dear Leadership,</p>
+        <p>Please provide your feedback on Project UPlan Ideas roll-out submitting the form below:</p>
         <form action="https://default61c54b5a63c5445da99df987800a2d.de.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/e92a9e56770e472b8c7757e26b6fbd14/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=oZafxVy8KB_f4MUx8cJ7pRx-mVLRrfBWbK5cjmJKnL0" method="POST">
-            <label for="firstName">First Name</label>
-            <input type="text" id="firstName" name="firstName" placeholder="Your first name" required>
+            
+            <label for="projectName">Project Name</label>
+            <input type="text" id="name-input" name="projectName" readonly="readonly" />
 
-            <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" name="lastName" placeholder="Your last name" required>
+            <label for="projectManager">Project Manager</label>
+            <input type="text" id="manager-input" name="projectManager" readonly="readonly" />
 
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+            <label for="completedOn">Project Completed on</label>
+            <input type="text" id="completedon-input" name="completedOn" readonly="readonly" />
+
+            <label for="projectDescription">Project description</label>
+            <input type="text" id="description-input" name="projectDescription" readonly="readonly" />
+
+            <label for="wf-id">WF ID</label>
+            <input type="text" id="id-input" name="wf-id" readonly="readonly" />
 
             <label for="email">Email</label>
             <input type="email" id="email" name="email" placeholder="Your email" required>
 
+            <label for="grade">Describe your overall Marketing project experience.</label>
+            <select id="grade" name="grade" placeholder="Select an option" type="text" list="grades" required>
+                <option name="table1" value="1"  selected="true" disabled="disabled">Select an option</option>
+                <option name="grade1" value="Good - I'm Satisfied">Good - I'm Satisfied</option>
+                <option name="grade2" value="Neutral">Neutral</option>
+                <option name="grade3" value="Bad - I'm Unsatisfied">Bad - I'm Unsatisfied</option>
+            </select>
+
             <label for="comments">Comments</label>
-            <textarea id="comments" name="comments" rows="5" placeholder="Your comments or questions" required></textarea>
+            <textarea id="comments" name="comments" rows="5" placeholder="Your comments" required></textarea>
 
             <button type="submit">Submit</button>
         </form>
@@ -202,9 +201,39 @@
         <div id="response-message"></div>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Your Info. All Rights Reserved.</p>
-        <p>Visit us online at https://www.yoursite.com</p>
-    </footer>
+    <script>
+        // Get the full query string from the current URL
+        const queryString = window.location.search;
+        // Create a URLSearchParams object
+        const urlParams = new URLSearchParams(queryString);
+
+        // Get the value of a specific parameter (e.g., 'name')
+        const projectName = urlParams.get('project');
+        const projectManager = urlParams.get('manager');
+        const completedOn = urlParams.get('completedon');
+        const projectDescription = urlParams.get('description');
+        const wfid = urlParams.get('wfid');
+
+        if (projectName) {
+            document.getElementById('project-name').innerHTML = `${projectName}`;
+        }
+        if (projectName) {
+            document.getElementById('name-input').value = `${projectName}`;
+        }
+        if (projectManager) {
+            document.getElementById('manager-input').value = `${projectManager}`;
+        }
+        if (completedOn) {
+            document.getElementById('completedon-input').value = `${completedOn}`;
+        }
+        if (projectDescription) {
+            document.getElementById('description-input').value = `${projectDescription}`;
+        }
+        if (wfid) {
+            document.getElementById('id-input').value = `${wfid}`;
+        }
+
+    </script>
+
 </body>
 </html>
