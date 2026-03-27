@@ -166,19 +166,19 @@
         <form action="https://default61c54b5a63c5445da99df987800a2d.de.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/e92a9e56770e472b8c7757e26b6fbd14/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=oZafxVy8KB_f4MUx8cJ7pRx-mVLRrfBWbK5cjmJKnL0" method="POST">
             
             <label for="projectName">Project Name</label>
-            <input type="text" id="name-input" name="projectName" readonly="readonly" />
+            <input type="text" id="name-input" name="projectName" style="border: none; outline: none;" readonly="readonly" />
 
             <label for="projectManager">Project Manager</label>
-            <input type="text" id="manager-input" name="projectManager" readonly="readonly" />
+            <input type="text" id="manager-input" name="projectManager" style="border: none; outline: none;" readonly="readonly" />
 
             <label for="completedOn">Project Completed on</label>
-            <input type="text" id="completedon-input" name="completedOn" readonly="readonly" />
+            <input type="text" id="completedon-input" name="completedOn" style="border: none; outline: none;" readonly="readonly" />
 
             <label for="projectDescription">Project description</label>
-            <input type="text" id="description-input" name="projectDescription" readonly="readonly" />
+            <textarea type="text" id="description-input" name="projectDescription" style="border: none; outline: none; font-family: Arial, sans-serif;" readonly="readonly"></textarea>
 
             <label for="wf-id">WF ID</label>
-            <input type="text" id="id-input" name="wf-id" readonly="readonly" />
+            <input type="text" id="id-input" name="wf-id" style="border: none; outline: none;" readonly="readonly" />
 
             <label for="email">Email</label>
             <input type="email" id="email" name="email" placeholder="Your email" required>
@@ -186,9 +186,9 @@
             <label for="grade">Describe your overall Marketing project experience.</label>
             <select id="grade" name="grade" placeholder="Select an option" type="text" list="grades" required>
                 <option name="table1" value="1"  selected="true" disabled="disabled">Select an option</option>
-                <option name="grade1" value="Good - I'm Satisfied">Good - I'm Satisfied</option>
-                <option name="grade2" value="Neutral">Neutral</option>
-                <option name="grade3" value="Bad - I'm Unsatisfied">Bad - I'm Unsatisfied</option>
+                <option name="grade1" value="Good - I'm Satisfied">&#128516; Good - I'm Satisfied</option>
+                <option name="grade2" value="Neutral">&#128528; Neutral</option>
+                <option name="grade3" value="Bad - I'm Unsatisfied">&#128544; Bad - I'm Unsatisfied</option>
             </select>
 
             <label for="comments">Comments</label>
