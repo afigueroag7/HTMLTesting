@@ -140,6 +140,7 @@
                     if (response.ok) {
                         responseMessage.textContent = "Form submitted successfully.";
                         responseMessage.className = "success";
+                        form.style.visibility = "hidden";
                     } else {
                         responseMessage.textContent = "Sorry, we cannot process this form at this time.";
                         responseMessage.className = "error";
@@ -162,42 +163,51 @@
     </header>
 
     <main>
-        <p>Please provide your feedback submitting the form below:</p>
+        <div id="response-message"></div>
+        <!-- <p>Please provide your feedback submitting the form below:</p> -->
         <form action="https://default61c54b5a63c5445da99df987800a2d.de.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/e92a9e56770e472b8c7757e26b6fbd14/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=oZafxVy8KB_f4MUx8cJ7pRx-mVLRrfBWbK5cjmJKnL0" method="POST">
             
-            <label for="projectName">Project Name</label>
-            <input type="text" id="name-input" name="projectName" style="border: none; outline: none;" readonly="readonly" />
+            <!-- <label for="projectName">Project Name</label>
+            <input type="text" id="name-input" name="projectName" style="border: none; outline: none;" readonly="readonly" /> -->
+            <input type="hidden" id="name-input" name="projectName" style="border: none; outline: none;" readonly="readonly" />
 
-            <label for="projectManager">Project Manager</label>
-            <input type="text" id="manager-input" name="projectManager" style="border: none; outline: none;" readonly="readonly" />
+            <!-- <label for="projectManager">Project Manager</label>
+            <input type="text" id="manager-input" name="projectManager" style="border: none; outline: none;" readonly="readonly" /> -->
+            <input type="hidden" id="manager-input" name="projectManager" style="border: none; outline: none;" readonly="readonly" />
 
-            <label for="completedOn">Project Completed on</label>
-            <input type="text" id="completedon-input" name="completedOn" style="border: none; outline: none;" readonly="readonly" />
+            <!-- <label for="completedOn">Project Completed on</label>
+            <input type="text" id="completedon-input" name="completedOn" style="border: none; outline: none;" readonly="readonly" /> -->
+            <input type="hidden" id="completedon-input" name="completedOn" style="border: none; outline: none;" readonly="readonly" />
 
-            <label for="projectDescription">Project description</label>
-            <textarea type="text" id="description-input" name="projectDescription" style="border: none; outline: none; font-family: Arial, sans-serif;" readonly="readonly"></textarea>
+            <!-- <label for="projectDescription">Project description</label>
+            <textarea type="text" id="description-input" name="projectDescription" style="border: none; outline: none; font-family: Arial, sans-serif;" readonly="readonly"></textarea> -->
+            <input type="hidden" id="description-input" name="projectDescription" style="border: none; outline: none; font-family: Arial, sans-serif;" readonly="readonly"></input>
 
             <label for="wf-id">WF ID</label>
             <input type="text" id="id-input" name="wf-id" style="border: none; outline: none;" readonly="readonly" />
+            <!-- <input type="hidden" id="id-input" name="wf-id" style="border: none; outline: none;" readonly="readonly" /> -->
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Your email" required>
+            <!-- <label for="responder">Responder</label>
+            <input type="email" id="responder-input" name="responder" placeholder="Your email" required> -->
+            <input type="hidden" id="responder-input" name="responder" placeholder="Your email" required>
+
+            <!-- <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Your email" required> -->
 
             <label for="grade">Describe your overall Marketing project experience.</label>
             <select id="grade" name="grade" placeholder="Select an option" type="text" list="grades" required>
-                <option name="table1" value="1"  selected="true" disabled="disabled">Select an option</option>
+                <option name="table1" value=""  selected="true" disabled="disabled">Select an option</option>
                 <option name="grade1" value="Good - I'm Satisfied">&#128516; Good - I'm Satisfied</option>
                 <option name="grade2" value="Neutral">&#128528; Neutral</option>
                 <option name="grade3" value="Bad - I'm Unsatisfied">&#128544; Bad - I'm Unsatisfied</option>
             </select>
 
             <label for="comments">Comments</label>
-            <textarea id="comments" name="comments" style="font-family: Arial, sans-serif;" rows="5" placeholder="Your comments" required></textarea>
+            <textarea id="comments" name="comments" style="font-family: Arial, sans-serif;" rows="5" placeholder="Your comments"></textarea>
 
             <button type="submit">Submit</button>
         </form>
 
-        <div id="response-message"></div>
     </main>
 
     <script>
@@ -212,6 +222,7 @@
         const completedOn = urlParams.get('completedon');
         const projectDescription = urlParams.get('description');
         const wfid = urlParams.get('wfid');
+        const responder = urlParams.get('responder');
 
         if (projectName) {
             document.getElementById('project-name').innerHTML = `${projectName}`;
@@ -230,6 +241,9 @@
         }
         if (wfid) {
             document.getElementById('id-input').value = `${wfid}`;
+        }
+        if (responder) {
+            document.getElementById('responder-input').value = `${responder}`;
         }
 
     </script>
